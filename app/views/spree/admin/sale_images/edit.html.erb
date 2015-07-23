@@ -1,7 +1,7 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @sale_image } %>
 
 <ul class="inline-menu">
-  <li><%= button_link_to t('spree.active_sale.event.link.back'), edit_admin_active_sale_active_sale_event_url(@active_sale, @active_sale_event), :icon => 'icon-arrow-left' %></li>
+  <li><%= button_link_to Spree.t('active_sale.event.link.back'), edit_admin_active_sale_active_sale_event_url(@active_sale, @active_sale_event), :class => "btn-primary", :icon => 'arrow-left' %></li>
 </ul>
 
 <%= form_for [:admin, @active_sale, @active_sale_event, @sale_image], :html => { :multipart => true } do |f| %>
@@ -11,7 +11,7 @@
       <%= f.label Spree.t(:thumbnail) %><br>
       <%= link_to image_tag(@sale_image.attachment.url(:small)), @sale_image.attachment.url(:product) %>
     </div>
-    <div class="nine columns omega">
+    <div class="col-md-9">
       <%= render :partial => 'form', :locals => { :f => f } %>  
     </div>
     <div class="clear"></div>

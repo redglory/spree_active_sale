@@ -18,10 +18,10 @@
     background-image: none;
 
     a {
-      background-color: very-light($color-3) !important;
-      border: 1px solid $color-border;
-      color: $color-body-text;
-      font-weight: $font-weight-bold;
+      background-color: $gray-lighter !important;
+      border: 1px solid darken($gray-lighter, 5);
+      color: $grey;
+      font-weight: bold;
       text-shadow: none;
       width: 90%;
       height: auto;

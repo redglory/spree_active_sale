@@ -1,0 +1,81 @@
+# Active Sale localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+pt:
+  spree:
+    active_sales: Campanhas
+    active_sale:
+      active_record:
+        name: "Nome da Campanha"
+      event:
+        active_sale_tree_hint: "Clique com o botão direito em qualquer linha da árvore para aceder ao meu que permite adicionar, remover ou ordernar produtos em campanha. Use Drag and drop para alterar a posição."
+        active_record:
+          description: "Descrição do Evento"
+          is_active: "Activo?"
+          is_hidden: "Oculto?"
+          is_permanent: "Permanente?"
+          is_live: "Publicado?"
+          discount: "Percentagem de Desconto"
+          name: "Nome do Evento"
+          start_date: "Data de Início"
+          end_date: "Data Fim"
+          eventable_name: "Defina o nome usado como tipo no Evento"
+          eventable_type: "Defina um tipo para o Evento"
+          permalink: "Escreva o nome ou permalink"
+          position: "Posição"
+        boolean:
+          yes: "Sim"
+          no: "Não"
+        can_not_be_nil: "O argumento não pode ser vazio ou uma instância de qualquer classe diferente de Spree::ActiveSaleEvent"
+        create_if_no_record: "Não tem definido nenhum Evento para esta campanha activa, deseja criar um Evento?"
+        datetimepicker:
+          format: ! '%d/%m/%Y %H:%M:%S %z'
+          js_format: 'HH:mm:ss z'
+          js_date_format: 'dd/mm/yy'
+          time_only_title: 'Tempo apenas'
+          time_text: 'Tempo'
+          hour_text: 'Hora'
+          minute_text: 'Minuto'
+          second_text: 'Segundo'
+          current_text: 'Actual'
+          close_text: 'Fechar'
+        ending_message: "CAMPANHA ESTÁ A TERMINAR"
+        eventable_hint: "Campanha para um produto individual ou vários baseado num taxon?"
+        eventable_name_hint: "Introduza o nome do produto ou taxon que será incluído nesta campanha."
+        discount_hint: "N.º Inteiro com a média ou percentagem de desconto máximo (ex. '30' representa 30% desconto)."
+        flash:
+          error: "A página que está à procura não está disponível."
+        link:
+          new: "Novo Evento"
+          edit: "Editar Evento"
+          back: "Voltar a Eventos"
+        no_image: "Nenhuma imagem encontrada. A imagem para esta campanha não está disponível pelo que serão utilizadas, por defeito, as imagens de produto(s)/taxon(s) associados na loja."
+        notice_messages:
+          created: "Evento criado com sucesso."
+          updated: "Evento actualizado com sucesso."
+          deleted: "Evento eliminado com sucesso."
+        title:
+          new: "Novo Evento"
+          edit: "Editar Evento"
+          list: "Lista de Eventos"
+        validation:
+          errors:
+            date_empty: "não pode ser vazio."
+            invalid_dates: "não pode ser maior ou igual à data fim."
+            invalid_root_dates: "e a data fim deverá estar compreendida entre o intervalo de datas início e fim das respectivas sub-campanhas."
+            live_event: "já se encontra a decorrer e publicada."
+        parent_id_cant_be_nil: "Pai não pode ser vazio"
+      events_not_found: "Não existem campanhas a decorrer neste momento. Tentar novamente mais tarde?"
+      link:
+        new: "Nova campanha activa"
+        edit: "Editar campanha activa"
+        back: "Voltar à lista de campanhas activas"
+      notice_messages:
+        created: "Campanha activa foi criada com sucesso."
+        updated: "Campanha activa foi actualizada com sucesso."
+        deleted: "Campanha activa foi eliminada com sucesso."
+      title:
+        new: "Nova campanha activa"
+        edit: "Editar campanha activa"
+        list: "Lista de campanhas activas"
+      tree_error: "Erro na Árvore de Campanha Activa"

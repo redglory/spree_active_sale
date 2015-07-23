@@ -10,14 +10,14 @@ module Spree
     before_save :have_valid_position
     after_save :update_parent_active_sales, :update_active_sale_position
 
-    has_many :sale_images, :as => :viewable, :dependent => :destroy, :order => 'position ASC'
+    has_many :sale_images, -> { order "position ASC" }, :as => :viewable, :dependent => :destroy
     belongs_to :eventable, :polymorphic => true
     belongs_to :active_sale
 
-    attr_accessible :description, :end_date, :eventable_id, :eventable_type, :is_active, :is_hidden, :is_permanent, :name, :permalink, :active_sale_id, :start_date, :eventable_name, :discount, :parent_id
+    #attr_accessible :description, :end_date, :eventable_id, :eventable_type, :is_active, :is_hidden, :is_permanent, :name, :permalink, :active_sale_id, :start_date, :eventable_name, :discount, :parent_id
 
     validates :name, :permalink, :eventable_id, :start_date, :end_date, :active_sale_id, :presence => true
-    validates :eventable_type, :presence => true, :uniqueness => { :scope => :eventable_id, :message => I18n.t('spree.active_sale.event.validation.errors.live_event') }, :if => :live?
+    validates :eventable_type, :presence => true, :uniqueness => { :scope => :eventable_id, :message => Spree.t('active_sale.event.validation.errors.live_event') }, :if => :live?
 
     scope :non_parents, lambda { where('parent_id IS NOT NULL') }
 
@@ -64,11 +64,11 @@ module Spree
     end
 
     private
-    def update_active_sale_position
-      return true unless active_sale.position.nil?
-      active_sale = self.active_sale
-      active_sale.position = nil
-      active_sale.save
-    end
+      def update_active_sale_position
+        return true unless active_sale.position.nil?
+        active_sale = self.active_sale
+        active_sale.position = nil
+        active_sale.save
+      end
   end
 end

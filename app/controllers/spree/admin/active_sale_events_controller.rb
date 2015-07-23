@@ -18,7 +18,7 @@ module Spree
       end
 
       def update_events
-        @active_sale_event.update_attributes(params[:active_sale_event])
+        @active_sale_event.update_attributes active_sale_event_params
         respond_with(@active_sale_event)
       end
 
@@ -44,7 +44,7 @@ module Spree
         end
 
         def get_eventable
-          object_name = params[:active_sale_event]
+          object_name = active_sale_event_params
           get_eventable_object(object_name)
         end
 
@@ -52,15 +52,22 @@ module Spree
           params[:parent_id] ||= check_active_sale_event_params
           @parent_id = params[:parent_id]
           if @parent_id.blank?
-            redirect_to edit_admin_active_sale_path(params[:active_sale_id]), :notice => I18n.t('spree.active_sale.event.parent_id_cant_be_nil')
+            redirect_to edit_admin_active_sale_path(params[:active_sale_id]), :notice => Spree.t('active_sale.event.parent_id_cant_be_nil')
           end
         end
 
-        def check_active_sale_event_params(event = params[:active_sale_event])
+        def check_active_sale_event_params(event = active_sale_event_params)
           return nil if event.nil?
           parent_id = event[:parent_id]
           event.delete(:parent_id) if event[:parent_id].nil? || event[:parent_id] == "nil"
           parent_id
+        end
+      
+      private
+        def active_sale_event_params
+          params.require(:active_sale_event).permit(:description, :end_date, :eventable_id, :eventable_type, 
+                                                    :is_active, :is_hidden, :is_permanent, :name, :permalink, 
+                                                    :active_sale_id, :start_date, :eventable_name, :discount, :parent_id)
         end
     end
   end

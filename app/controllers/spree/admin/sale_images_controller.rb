@@ -28,6 +28,10 @@ module Spree
           @viewable = @sale_image.viewable
         end
 
+        def sale_image_params
+          params.require(:sale_image).permit(:alt, :attachment, :position, :viewable_type, :viewable_id)
+        end
+
     end
   end
 end
