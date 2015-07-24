@@ -19,7 +19,7 @@ module Spree
     validates :name, :permalink, :eventable_id, :start_date, :end_date, :active_sale_id, :presence => true
     validates :eventable_type, :presence => true, :uniqueness => { :scope => :eventable_id, :message => Spree.t('active_sale.event.validation.errors.live_event') }, :if => :live?
 
-    scope :non_parents, lambda { where('parent_id IS NOT NULL') }
+    scope :non_parents, -> { where('parent_id IS NOT NULL') }
 
     # Spree::ActiveSaleEvent.is_live? method 
     # should only/ always represents live and active events and not just live events.

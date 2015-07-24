@@ -28,7 +28,7 @@ module Spree
         if root
           root.update_attributes(root_hash)
         else
-          self.root = Spree::ActiveSaleEvent.create!(root_hash, :without_protection => true)
+          self.root = Spree::ActiveSaleEvent.create!(root_hash)
         end
       end
 

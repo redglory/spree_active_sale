@@ -35,6 +35,7 @@ module Spree
         end
 
         def build_resource
+          binding.pry
           get_eventable unless params[object_name].nil?
           if parent_data.present?
             parent.send(controller_name).build(params[object_name])
@@ -51,6 +52,7 @@ module Spree
         def parent_id_for_event
           params[:parent_id] ||= check_active_sale_event_params
           @parent_id = params[:parent_id]
+          binding.pry
           if @parent_id.blank?
             redirect_to edit_admin_active_sale_path(params[:active_sale_id]), :notice => Spree.t('active_sale.event.parent_id_cant_be_nil')
           end
