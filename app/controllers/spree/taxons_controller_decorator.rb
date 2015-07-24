@@ -2,12 +2,13 @@ module Spree
   TaxonsController.class_eval do
 
     def show
-      @taxon = Spree::Taxon.find_by_permalink!(params[:id])
+      @taxon = Taxon.friendly.find(params[:id])
       return unless @taxon
 
       if @taxon.live?
-        @searcher = Spree::Config.searcher_class.new(params.merge(:taxon => @taxon.id))
+        @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
         @products = @searcher.retrieve_products
+        @taxonomies = Spree::Taxonomy.includes(root: :children)
 
         respond_with(@taxon)
       else
